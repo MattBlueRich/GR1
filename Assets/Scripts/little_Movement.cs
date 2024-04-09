@@ -6,10 +6,12 @@ public class little_Movement : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public float moveSpeed = 1f;
+    public float moveSpeed = 5f;
     public float distanceToGround = 0.25f;
     public float gravity = 0.1f;
     public float jumpForce = 100.0f;
+
+    float p2Velocity;
 
     LayerMask groundMask;
 
@@ -30,7 +32,7 @@ public class little_Movement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
 
-        groundMask = LayerMask.NameToLayer("Ground");
+        groundMask = LayerMask.GetMask("Ground");
     }
 
     void FixedUpdate()
@@ -44,16 +46,21 @@ public class little_Movement : MonoBehaviour
             rb.AddForce(new Vector2(0, -gravity));
         }
 
-        //move left
-        if(Input.GetKey(KeyCode.LeftArrow))
-        {
-            gameObject.transform.position -= new Vector3(moveSpeed, 0, 0);
-        }
+    }
 
-        //move right
+    void Update()
+    {
+        p2Velocity = 0;
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            p2Velocity = -moveSpeed;
+        }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            gameObject.transform.position -= new Vector3(-moveSpeed, 0, 0);
+            p2Velocity = moveSpeed;
         }
+
+        rb.velocity = new Vector2(p2Velocity, rb.velocity.y);
     }
 }
