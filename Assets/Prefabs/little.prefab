@@ -148,5 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.1
   distanceToGround: 0.3
-  gravity: 3
-  jumpForce: 90
+  gravity: 5
+  jumpForce: 20
