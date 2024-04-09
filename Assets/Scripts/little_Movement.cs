@@ -31,7 +31,7 @@ public class little_Movement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
 
-        groundMask = LayerMask.NameToLayer("ground");
+        groundMask = LayerMask.NameToLayer("Ground");
     }
 
     void FixedUpdate()
